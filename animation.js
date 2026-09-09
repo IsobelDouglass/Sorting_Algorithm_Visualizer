@@ -1,4 +1,4 @@
-
+function movingAnimation(element, startX, startY, endX, endY, duration) {}
 
 function playSubtleClick() {
   const osc = audioCtx.createOscillator();

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 make it so that the display updates in accordance to the state of the array. every time a step is completed, it follows that it would follow similarly 
 
 list of sorting algorithims
@@ -146,5 +145,4 @@ window.onclick = function(event) {
     }
   }
 }
->>>>>>> 02318bcbe27d7d9ea109a1fcd150e573b0e2a6c8
 </script>
