@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sorting Algorithms Visualizer</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="formatting.css">
+    </head>
+    <body>
+        <header>
+            <h1>Sorting Algorithms Visualizer</h1>
+        </header>
+        <main>
+            <div id="options-sidebar">
+                <button id="generate-button">Generate Array</button>
+                <div id="menu" class="dropdown">
+                    <button class="dropdown-btn" onclick="toggleDropdown(this); toggleDropdown(document.querySelector('.dropdown-content'))">Menu ▾</button>
+                    <div class="dropdown-content">
+                        <button id="selection-sort">Selection Sort</button>
+                        <button id="bubble-sort">Bubble Sort</button>
+                    </div>
+                </div>
+            </div>
+            <div id="speed-slider-container">
+                <label for="speed-slider">Speed:</label>
+                <input type="range" id="speed-slider" min="1" max="100" value="50">
+            </div>
+            <div id="display-container">
+            </div>
+        </main>
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
