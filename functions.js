@@ -13,7 +13,7 @@ function generateArray(element, num) {
         div.classList.add("value-" + randomValue);
         element.appendChild(div);
     }
-    return;
+    return element;
 }
 
 async function selectionSort(array, render) {
@@ -27,9 +27,12 @@ async function selectionSort(array, render) {
             }
         }
         if (minIndex !== i) {
-            [array.children[i], array.children[minIndex]] = [array.children[minIndex], array.children[i]];
+            let elem1 = array.children[i];
+            let elem2 = array.children[minIndex];
+            array.insertBefore(elem2, elem1);
+            array.insertBefore(elem1, elem2.nextSibling);
             animate.playSoundAndAnimation();
-            if (render) render(array); // optional: update UI here
+            if (render) render(array);
             await animate.sleep(1000);
         }
     }
@@ -43,7 +46,10 @@ async function bubbleSort(array, render) {
             let currentValue = parseInt(array.children[j].classList[1].split("-")[1]);
             let nextValue = parseInt(array.children[j + 1].classList[1].split("-")[1]);
             if (currentValue > nextValue) {
-                [array.children[j], array.children[j + 1]] = [array.children[j + 1], array.children[j]];
+                let elem1 = array.children[j];
+                let elem2 = array.children[j + 1];
+                array.insertBefore(elem2, elem1);
+                array.insertBefore(elem1, elem2.nextSibling);
                 animate.playSoundAndAnimation();
                 if (render) render(array);
                 await animate.sleep(1000);

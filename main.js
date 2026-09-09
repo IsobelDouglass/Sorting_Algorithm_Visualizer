@@ -18,9 +18,7 @@ elements.generateBtn.addEventListener("click", () => {
 });
 
 elements.selectionSortBtn.addEventListener("click", async () => {
-    await functions.selectionSort(array, (current) => {
-        elements.arrayElement.innerText = current;
-    });
+    await functions.selectionSort(array);
 });
 
 elements.bubbleSortBtn.addEventListener("click", async () => {
