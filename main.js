@@ -2,6 +2,7 @@ import * as elements from "./import.js";
 import * as functions from "./functions.js";
 
 let array;
+let container;
 
 elements.arraySize.addEventListener("blur", () => {
     if (elements.arraySize.value < 5) {
@@ -14,15 +15,15 @@ elements.arraySize.addEventListener("blur", () => {
 
 elements.generateBtn.addEventListener("click", () => {
     let sizeArray = parseInt(elements.arraySize.value);
-    array = functions.generateArray(elements.displayContainer, sizeArray);
+    array = functions.generateArray(sizeArray);
+    container = elements.displayContainer;
+    functions.renderArray(container, array);
 });
 
 elements.selectionSortBtn.addEventListener("click", async () => {
-    await functions.selectionSort(array);
+    await functions.selectionSort(array, container, functions.renderArray);
 });
 
 elements.bubbleSortBtn.addEventListener("click", async () => {
-    await functions.bubbleSort(array, (current) => {
-        elements.arrayElement.innerText = current;
-    });
+    await functions.bubbleSort(array, container, functions.renderArray);
 });

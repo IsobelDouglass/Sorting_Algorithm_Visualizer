@@ -4,54 +4,60 @@ function toggleDropdown(element) {
     element.classList.toggle("show");
 }
 
-function generateArray(element, num) {  
-    element.replaceChildren();
+function generateArray(num) {
+    let output = [];
     for (let j = 0; j < num; j++) {
         let randomValue = Math.floor(Math.random() * 10) + 1;
+        output.push(randomValue);
+    }
+    return output;
+}
+
+function renderArray(element, array) {
+    element.replaceChildren();
+    for (let i = 0; i < array.length; i++) {
         let div = document.createElement("div");
         div.className = "array-element";
-        div.classList.add("value-" + randomValue);
+        div.classList.add("value-" + array[i]);
         element.appendChild(div);
     }
     return element;
 }
 
-async function selectionSort(array, render) {
-    for (let i = 0; i < array.children.length; i++) {
+async function selectionSort(array, container, render) {
+    for (let i = 0; i < array.length; i++) {
         let minIndex = i;
-        for (let j = i + 1; j < array.children.length; j++) {
-            let jValue = parseInt(array.children[j].classList[1].split("-")[1]);
-            let minValue = parseInt(array.children[minIndex].classList[1].split("-")[1]);
-            if (jValue < minValue) {
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
         }
         if (minIndex !== i) {
-            let elem1 = array.children[i];
-            let elem2 = array.children[minIndex];
-            array.insertBefore(elem2, elem1);
-            array.insertBefore(elem1, elem2.nextSibling);
-            animate.playSoundAndAnimation();
-            if (render) render(array);
+            [array[i], array[minIndex]] = [array[minIndex], array[i]];
+            render(container, array);
+            try {
+                animate.playSoundAndAnimation();
+            } catch (e) {
+                console.error("Sound error:", e);
+            }
             await animate.sleep(1000);
         }
     }
     return array;
 }
 
-async function bubbleSort(array, render) {
-    let n = array.children.length;
+async function bubbleSort(array, container, render) {
+    let n = array.length;
     for (let i = 0; i < n - 1; i++) {
         for (let j = 0; j < n - i - 1; j++) {
-            let currentValue = parseInt(array.children[j].classList[1].split("-")[1]);
-            let nextValue = parseInt(array.children[j + 1].classList[1].split("-")[1]);
-            if (currentValue > nextValue) {
-                let elem1 = array.children[j];
-                let elem2 = array.children[j + 1];
-                array.insertBefore(elem2, elem1);
-                array.insertBefore(elem1, elem2.nextSibling);
-                animate.playSoundAndAnimation();
-                if (render) render(array);
+            if (array[j] > array[j + 1]) {
+                [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                render(container, array);
+                try {
+                    animate.playSoundAndAnimation();
+                } catch (e) {
+                    console.error("Sound error:", e);
+                }
                 await animate.sleep(1000);
             }
         }
@@ -59,4 +65,4 @@ async function bubbleSort(array, render) {
     return array;
 }
 
-export { toggleDropdown, generateArray, selectionSort, bubbleSort };
+export { toggleDropdown, generateArray, selectionSort, bubbleSort, renderArray };
