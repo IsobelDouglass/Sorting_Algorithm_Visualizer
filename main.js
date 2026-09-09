@@ -3,17 +3,17 @@ import * as functions from "./functions.js";
 
 let array;
 
-elements.generateButton.addEventListener("click", () => {
+elements.generateBtn.addEventListener("click", () => {
     array = functions.generateArray(elements.displayContainer);
 });
 
-elements.selectionSort.addEventListener("click", async () => {
+elements.selectionSortBtn.addEventListener("click", async () => {
     await functions.selectionSort(array, (current) => {
         elements.arrayElement.innerText = current;
     });
 });
 
-elements.bubbleSort.addEventListener("click", async () => {
+elements.bubbleSortBtn.addEventListener("click", async () => {
     await functions.bubbleSort(array, (current) => {
         elements.arrayElement.innerText = current;
     });

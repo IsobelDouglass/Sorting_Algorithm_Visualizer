@@ -21,7 +21,9 @@ async function selectionSort(array, render) {
     for (let i = 0; i < array.children.length; i++) {
         let minIndex = i;
         for (let j = i + 1; j < array.children.length; j++) {
-            if (array.children[j].classList[1] < array.children[minIndex].classList[1]) {
+            let jValue = parseInt(array.children[j].classList[1].split("-")[1]);
+            let minValue = parseInt(array.children[minIndex].classList[1].split("-")[1]);
+            if (jValue < minValue) {
                 minIndex = j;
             }
         }
@@ -39,7 +41,9 @@ async function bubbleSort(array, render) {
     let n = array.children.length;
     for (let i = 0; i < n - 1; i++) {
         for (let j = 0; j < n - i - 1; j++) {
-            if (array.children[j].classList[1] > array.children[j + 1].classList[1]) {
+            let currentValue = parseInt(array.children[j].classList[1].split("-")[1]);
+            let nextValue = parseInt(array.children[j + 1].classList[1].split("-")[1]);
+            if (currentValue > nextValue) {
                 [array.children[j], array.children[j + 1]] = [array.children[j + 1], array.children[j]];
                 animate.playSubtleClick();
                 if (render) render(array);

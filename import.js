@@ -8,4 +8,4 @@ const displayContainer = document.getElementById("display-container");
 const selectionSort = document.getElementById("selection-sort");
 const bubbleSort = document.getElementById("bubble-sort");
 
-export { generateButton, menuButton, dropdownContent, displayContainer, selectionSort, bubbleSort };
+export { generateButton as generateBtn, menuButton as menuBtn, dropdownContent, displayContainer, selectionSort as selectionSortBtn, bubbleSort as bubbleSortBtn };
