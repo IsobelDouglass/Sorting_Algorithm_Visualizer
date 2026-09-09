@@ -33,7 +33,7 @@ function playSoundAndAnimation(element, startX, startY, endX, endY, duration) {
 }
 
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export { playSoundAndAnimation, sleep };

@@ -18,7 +18,7 @@
                 <p>Array Size: <span id="array-size-value">20</span></p>
                 <button id="reset-button">Reset</button>
                 <div id="menu" class="dropdown">
-                    <button class="dropdown-btn" onclick="toggleDropdown(this); toggleDropdown(document.querySelector('.dropdown-content'))">Menu ▾</button>
+                    <button class="dropdown-btn" onclick="toggleDropdown(document.querySelector('.dropdown-content'))">Menu ▾</button>
                     <div class="dropdown-content">
                         <button id="selection-sort">Selection Sort</button>
                         <button id="bubble-sort">Bubble Sort</button>
@@ -27,7 +27,7 @@
             </div>
             <div id="speed-slider-container">
                 <label for="speed-slider">Speed:</label>
-                <input type="range" id="speed-slider" min="2000" max="250" value="1000">
+                <input type="range" id="speed-slider" min="0" max="1750" value="1000">
             </div>
             <div id="display-container">
             </div>

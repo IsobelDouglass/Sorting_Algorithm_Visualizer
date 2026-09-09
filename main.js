@@ -1,11 +1,18 @@
 import * as elements from "./import.js";
 import * as functions from "./functions.js";
 
+// Make toggleDropdown globally available for HTML onclick handlers
+window.toggleDropdown = functions.toggleDropdown;
+
+elements.resetButton.addEventListener("click", () => {
+    functions.renderArray(elements.displayContainer, functions.output);
+});
+
 let array;
 let container;
 let originalArray;
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
     let sizeArray = parseInt(elements.arraySize.value);
     array = functions.generateArray(sizeArray);
     originalArray = [...array];
@@ -37,11 +44,11 @@ elements.generateBtn.addEventListener("click", () => {
 elements.selectionSortBtn.addEventListener("click", async () => {
     array = [...originalArray];
     functions.renderArray(container, array);
-    await functions.selectionSort(array, container, functions.renderArray, elements.speedSlider.value);
+    await functions.selectionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
 });
 
 elements.bubbleSortBtn.addEventListener("click", async () => {
     array = [...originalArray];
     functions.renderArray(container, array);
-    await functions.bubbleSort(array, container, functions.renderArray, elements.speedSlider.value);
+    await functions.bubbleSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
 });

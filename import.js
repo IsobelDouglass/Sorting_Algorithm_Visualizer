@@ -12,4 +12,6 @@ const bubbleSort = document.getElementById("bubble-sort");
 const arraySize = document.getElementById("array-size");
 const arraySizeValue = document.getElementById("array-size-value");
 
-export { generateButton as generateBtn, menuButton as menuBtn, dropdownContent, displayContainer, selectionSort as selectionSortBtn, bubbleSort as bubbleSortBtn, arraySize, arraySizeValue };
+const resetButton = document.getElementById("reset-button");
+
+export { generateButton as generateBtn, menuButton as menuBtn, dropdownContent, displayContainer, selectionSort as selectionSortBtn, bubbleSort as bubbleSortBtn, arraySize, arraySizeValue, speedSlider, resetButton };
