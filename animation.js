@@ -9,7 +9,7 @@ function initAudioContext() {
 
 function movingAnimation(element, startX, startY, endX, endY, duration) {}
 
-function playSoundAndAnimation() {
+function playSoundAndAnimation(element, startX, startY, endX, endY, duration) {
   try {
     const ctx = initAudioContext();
     const osc = ctx.createOscillator();
@@ -25,6 +25,8 @@ function playSoundAndAnimation() {
     osc.connect(gain).connect(ctx.destination);
     osc.start();
     osc.stop(ctx.currentTime + 0.05);
+
+    movingAnimation(element, startX, startY, endX, endY, duration);
   } catch (e) {
     console.error("Audio error:", e);
   }

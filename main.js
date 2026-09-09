@@ -3,6 +3,15 @@ import * as functions from "./functions.js";
 
 let array;
 let container;
+let originalArray;
+
+window.addEventListener("load", () => {
+    let sizeArray = parseInt(elements.arraySize.value);
+    array = functions.generateArray(sizeArray);
+    originalArray = [...array];
+    container = elements.displayContainer;
+    functions.renderArray(container, array);
+});
 
 elements.arraySize.addEventListener("blur", () => {
     if (elements.arraySize.value < 5) {
@@ -13,17 +22,26 @@ elements.arraySize.addEventListener("blur", () => {
     elements.arraySizeValue.innerText = elements.arraySize.value;
 });
 
+elements.speedSlider.addEventListener("input", () => {
+    elements.speedSlider.value = elements.speedSlider.value;
+});
+
 elements.generateBtn.addEventListener("click", () => {
     let sizeArray = parseInt(elements.arraySize.value);
     array = functions.generateArray(sizeArray);
+    originalArray = [...array];
     container = elements.displayContainer;
     functions.renderArray(container, array);
 });
 
 elements.selectionSortBtn.addEventListener("click", async () => {
-    await functions.selectionSort(array, container, functions.renderArray);
+    array = [...originalArray];
+    functions.renderArray(container, array);
+    await functions.selectionSort(array, container, functions.renderArray, elements.speedSlider.value);
 });
 
 elements.bubbleSortBtn.addEventListener("click", async () => {
-    await functions.bubbleSort(array, container, functions.renderArray);
+    array = [...originalArray];
+    functions.renderArray(container, array);
+    await functions.bubbleSort(array, container, functions.renderArray, elements.speedSlider.value);
 });

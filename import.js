@@ -2,6 +2,7 @@ const generateButton = document.getElementById("generate-button");
 
 const menuButton = document.querySelector(".dropdown-btn");
 const dropdownContent = document.querySelector(".dropdown-content");
+const speedSlider = document.getElementById("speed-slider");
 
 const displayContainer = document.getElementById("display-container");
 
