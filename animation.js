@@ -1,6 +1,6 @@
 function movingAnimation(element, startX, startY, endX, endY, duration) {}
 
-function playSubtleClick() {
+function playSoundAndAnimation() {
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
 
@@ -20,4 +20,4 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export { playSubtleClick, sleep };
+export { playSoundAndAnimation, sleep };

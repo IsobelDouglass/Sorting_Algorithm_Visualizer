@@ -4,14 +4,13 @@ function toggleDropdown(element) {
     element.classList.toggle("show");
 }
 
-function generateArray(element) {
-    let i = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+function generateArray(element, num) {  
     element.replaceChildren();
-    for (let j = 0; j < i; j++) {
-        let num = Math.floor(Math.random() * 10) + 1;
+    for (let j = 0; j < num; j++) {
+        let randomValue = Math.floor(Math.random() * 10) + 1;
         let div = document.createElement("div");
         div.className = "array-element";
-        div.classList.add("value-" + num);
+        div.classList.add("value-" + randomValue);
         element.appendChild(div);
     }
     return;
@@ -29,7 +28,7 @@ async function selectionSort(array, render) {
         }
         if (minIndex !== i) {
             [array.children[i], array.children[minIndex]] = [array.children[minIndex], array.children[i]];
-            animate.playSubtleClick();
+            animate.playSoundAndAnimation();
             if (render) render(array); // optional: update UI here
             await animate.sleep(1000);
         }
@@ -45,7 +44,7 @@ async function bubbleSort(array, render) {
             let nextValue = parseInt(array.children[j + 1].classList[1].split("-")[1]);
             if (currentValue > nextValue) {
                 [array.children[j], array.children[j + 1]] = [array.children[j + 1], array.children[j]];
-                animate.playSubtleClick();
+                animate.playSoundAndAnimation();
                 if (render) render(array);
                 await animate.sleep(1000);
             }

@@ -58,3 +58,10 @@
   height: 300px;
   background: steelblue;
 }
+
+p {
+  margin: 2px 0;
+  padding: 2px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
