@@ -1,9 +1,5 @@
 import * as animate from "./animation.js";
 
-function toggleDropdown(element) {
-    element.classList.toggle("show");
-}
-
 let output = [];
 
 function generateArray(num) {
@@ -67,4 +63,4 @@ async function bubbleSort(array, container, render, speed) {
     return array;
 }
 
-export { toggleDropdown, generateArray, selectionSort, bubbleSort, renderArray, output };
+export { generateArray, selectionSort, bubbleSort, renderArray, output };

@@ -1,9 +1,6 @@
 import * as elements from "./import.js";
 import * as functions from "./functions.js";
 
-// Make toggleDropdown globally available for HTML onclick handlers
-window.toggleDropdown = functions.toggleDropdown;
-
 elements.resetButton.addEventListener("click", () => {
     functions.renderArray(elements.displayContainer, functions.output);
 });
