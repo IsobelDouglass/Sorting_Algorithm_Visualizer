@@ -44,6 +44,12 @@ elements.selectionSortBtn.addEventListener("click", async () => {
     await functions.selectionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
 });
 
+elements.insertionSortBtn.addEventListener("click", async () => {
+    array = [...originalArray];
+    functions.renderArray(container, array);
+    await functions.insertionSort(array, container, functions.renderArray, 2000 - elements.speedSlider.value);
+});
+
 elements.bubbleSortBtn.addEventListener("click", async () => {
     array = [...originalArray];
     functions.renderArray(container, array);

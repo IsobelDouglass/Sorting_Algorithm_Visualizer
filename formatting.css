@@ -68,5 +68,11 @@ p {
 }
 
 .array-element {
-  transition: all 0.75s ease;
+  transition: all 1.75s ease;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #555;
 }

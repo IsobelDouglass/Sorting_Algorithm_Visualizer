@@ -1,148 +1,121 @@
 make it so that the display updates in accordance to the state of the array. every time a step is completed, it follows that it would follow similarly 
 
-list of sorting algorithims
-insertion sort
+add a walk through function for one of the algorithms that shows the code and shows the variables being compared and assigned. 
 
-
-<div class="dropdown">
-  <button class="dropdown-btn" onclick="toggleDropdown()">Menu ▾</button>
-  <div class="dropdown-content" id="dropdownContent">
-    <a href="#">Option 1</a>
-    <a href="#">Option 2</a>
-    <a href="#">Option 3</a>
-  </div>
-</div>
-
-<style>
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-btn {
-  padding: 10px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 4px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-radius: 4px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 14px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown-content a:hover {
-  background: #f2f2f2;
-}
-
-.dropdown-content.show {
-  display: block;
-}
-</style>
-
-<script>
-function toggleDropdown() {
-  document.getElementById("dropdownContent").classList.toggle("show");
-}
-
-// Close dropdown if clicking outside
-window.onclick = function(event) {
-  if (!event.target.matches('.dropdown-btn')) {
-    const dropdown = document.getElementById("dropdownContent");
-    if (dropdown.classList.contains('show')) {
-      dropdown.classList.remove('show');
-    }
-  }
-}
-=======
-make it so that the display updates in accordance to the state of the array. every time a step is completed, it follows that it would follow similarly 
+make it so that there is the number value of the value visible below the bars (font - Courier?)
 
 list of sorting algorithims
-insertion sort
-
-
-<div class="dropdown">
-  <button class="dropdown-btn" onclick="toggleDropdown()">Menu ▾</button>
-  <div class="dropdown-content" id="dropdownContent">
-    <a href="#">Option 1</a>
-    <a href="#">Option 2</a>
-    <a href="#">Option 3</a>
-  </div>
-</div>
-
-<style>
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-btn {
-  padding: 10px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 4px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #fff;
-  min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-radius: 4px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 14px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown-content a:hover {
-  background: #f2f2f2;
-}
-
-.dropdown-content.show {
-  display: block;
-}
-</style>
-
-<script>
-function toggleDropdown() {
-  document.getElementById("dropdownContent").classList.toggle("show");
-}
-
-// Close dropdown if clicking outside
-window.onclick = function(event) {
-  if (!event.target.matches('.dropdown-btn')) {
-    const dropdown = document.getElementById("dropdownContent");
-    if (dropdown.classList.contains('show')) {
-      dropdown.classList.remove('show');
+function quickSort(array, start, end) {
+  if (start === undefined) {
+    start = 0;
+    end = array.length - 1;
+  } else if (start >= end) {
+    return array;
+  }
+  var rStart = start, rEnd = end;
+  var pivot = array[Math.floor(Math.random() * (end - start + 1) + start)];
+  while (start < end) {
+    while (array[start] <= pivot) start++;
+    while (array[end] > pivot) end--;
+    if (start < end) {
+      var temp = array[start];
+      array[start] = array[end];
+      array[end] = temp;
     }
   }
+  quickSort(array, rStart, start - 1);
+  quickSort(array, start, rEnd);
 }
-</script>
+////////////////////////////////////////////////////////////////////////////////////
+function mergeSort(array) {
+  const half = array.length / 2
+
+  if (array.length < 2){
+    return array
+  }
+
+  const left = array.splice(0, half)
+  return merge(mergeSort(left),mergeSort(array))
+}
+
+function merge(left, right) {
+    let arr = []
+
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            arr.push(left.shift())
+        } else {
+            arr.push(right.shift())
+        }
+    }
+
+    return [ ...arr, ...left, ...right ]
+}
+////////////////////////////////////////////////////////////////////////////////////
+function heapSort(array) {
+  let size = array.length
+
+  for (let i = Math.floor(size / 2 - 1); i >= 0; i--)
+    heapify(array, size, i)
+
+  for (let i = size - 1; i >= 0; i--) {
+    let temp = array[0]
+    array[0] = array[i]
+    array[i] = temp
+    heapify(array, i, 0)
+  }
+}
+
+function heapify(array, size, i) {
+  let max = i
+  let left = 2 * i + 1
+  let right = 2 * i + 2
+
+  if (left < size && array[left] > array[max])
+    max = left
+
+  if (right < size && array[right] > array[max])
+    max = right
+
+  if (max != i) {
+    let temp = array[i]
+    array[i] = array[max]
+    array[max] = temp
+
+    heapify(array, size, max)
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////
+function insertionSort(arr, n) {
+  let i, key, j;
+  for (i = 1; i < n; i++) {
+    key = arr[i];
+    j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j = j - 1;
+    }
+    arr[j + 1] = key;
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////
+function gnomeSort(arr) {
+    function moveBack(i) {
+        for( ; i > 0 && arr[i-1] > arr[i]; i--) {
+            var t = arr[i];
+            arr[i] = arr[i-1];
+            arr[i-1] = t;
+        }
+    }
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i-1] > arr[i]) moveBack(i);
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////

@@ -23,9 +23,10 @@ function renderArray(element, array) {
 }
 
 async function selectionSort(array, container, render, speed) {
-    for (let i = 0; i < array.length; i++) {
+    let n = array.length;
+    for (let i = 0; i < n; i++) {
         let minIndex = i;
-        for (let j = i + 1; j < array.length; j++) {
+        for (let j = i + 1; j < n; j++) {
             if (array[j] < array[minIndex]) {
                 minIndex = j;
             }
@@ -39,6 +40,54 @@ async function selectionSort(array, container, render, speed) {
                 console.error("Sound error:", e);
             }
             await animate.sleep(speed);
+        }
+    }
+    return array;
+}
+
+/*
+async function insertionSort(array, container, render, speed) {
+    let n = array.length;
+    for (let i = 1; i < n; i++) {
+        let key = array[i];
+        let j = i - 1;
+        while (j >= 0 && array[j] > key) {
+            array[j + 1] = array[j];
+            j--;
+            render(container, array);
+            try {
+                animate.playSoundAndAnimation(array[j + 1], j, j + 1, j, j + 1, 500);
+            } catch (e) {
+                console.error("Sound error:", e);
+            }
+            await animate.sleep(speed);
+        }
+        array[j + 1] = key;
+        render(container, array);
+    }
+    return array;
+}
+*/
+
+async function gnomeSort(array, container, render, speed) {
+    let index = 0;
+    let n = array.length;
+    while (index < n) {
+        if (index === 0) {
+            index++;
+        }
+        if (array[index] >= array[index - 1]) {
+            index++;
+        } else {
+            [array[index], array[index - 1]] = [array[index - 1], array[index]];
+            render(container, array);
+            try {
+                animate.playSoundAndAnimation(array[index], index, index - 1, index, index - 1, 500);
+            } catch (e) {
+                console.error("Sound error:", e);
+            }
+            await animate.sleep(speed);
+            index--;
         }
     }
     return array;
@@ -63,4 +112,5 @@ async function bubbleSort(array, container, render, speed) {
     return array;
 }
 
-export { generateArray, selectionSort, bubbleSort, renderArray, output };
+
+export { generateArray, selectionSort, bubbleSort, gnomeSort as insertionSort, renderArray, output };
