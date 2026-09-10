@@ -1,10 +1,10 @@
-make it so that the display updates in accordance to the state of the array. every time a step is completed, it follows that it would follow similarly 
-
-add a walk through function for one of the algorithms that shows the code and shows the variables being compared and assigned. 
+add a walk through function for one of the algorithms that shows the code and shows the variables being compared and assigned. (preferably insertion sort)
 
 make it so that there is the number value of the value visible below the bars (font - Courier?)
 
-list of sorting algorithims
+get rid of color coded blocks and make the algo highlight the blocks theyre working on / moving. Change the colors into grayscale
+
+list of sorting algorithms
 function quickSort(array, start, end) {
   if (start === undefined) {
     start = 0;
